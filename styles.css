@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#heading {
+    text-align: center;
+    font-size: 3.3em;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    height: 125px;
+    width: 125px;
+    border: 1px solid black;
+}
+
+.box:nth-child(2) {
+    border-bottom: none;
+    border-top: none;
+}
+
+.column {
+    display: inline-block;
+    max-width: 126px;
+}
+
+#btn {
+    position: relative;
+    bottom: 400px;
+    left: 1000px;
+}
