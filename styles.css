@@ -5,12 +5,15 @@
   background-color:#141414;
   color: #fff; 
 }
+
 h1{
   background: transparent;
 }
-body{
-  
+
+#btn{
+margin: 1em;
 }
+
 td {
 	border:  2px solid #333;
 	height:  100px;
