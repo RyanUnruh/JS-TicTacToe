@@ -1,5 +1,5 @@
-let turnCounter = 0;
 const cells = document.querySelectorAll(".cell");
+let turnCounter = 0;
 let endgame = document.querySelector(".endgame");
 let winCombos = [
   [cells[0], cells[1], cells[2]],
