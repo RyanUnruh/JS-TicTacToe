@@ -74,7 +74,7 @@ table tr td:last-child {
 .endgame {
   display: none;
   width: 200px;
-  top: 230px;
+  top: 250px;
   background-color: rgb(255, 119, 119);
   position: absolute;
   left: 50%;
