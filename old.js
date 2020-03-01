@@ -1,6 +1,7 @@
-let turnCounter = 0;
 const cells = document.querySelectorAll(".cell");
+let button = document.querySelector("#btn");
 let endgame = document.querySelector(".endgame");
+let turnCounter = 0;
 let winCombos = [
   [cells[0], cells[1], cells[2]],
   [cells[3], cells[4], cells[5]],
@@ -12,35 +13,20 @@ let winCombos = [
   [cells[0], cells[4], cells[8]]
 ];
 
-function reset() {
-  cells.forEach(cell => {
-    cell.innerHTML = "";
-    endgame.style.display = "none";
-    turnCounter = 0;
+cells.forEach(cell => {
+  cell.addEventListener("click", () => {
+    if (turnCounter % 2 === 0) {
+      cell.textContent = "X";
+    } else {
+      cell.textContent = "O";
+    }
+    turnCounter++;
+
+    checkWin();
   });
+});
 
-  cells.forEach(cell => {
-    cell.removeEventListener("click", onClick);
-  });
-
-  cells.forEach(cell => {
-    cell.addEventListener("click", onClick);
-  });
-}
-
-function onClick(event) {
-  if (turnCounter % 2 === 0) {
-    event.target.textContent = "X";
-    checkWin("X");
-  } else {
-    event.target.textContent = "O";
-    checkWin("O");
-  }
-  turnCounter++;
-  event.target.removeEventListener("click", onClick);
-}
-
-function checkWin(mark) {
+function check(mark) {
   winCombos.forEach(combo => {
     let sum = 0;
     combo.forEach(c => {
@@ -56,8 +42,28 @@ function checkWin(mark) {
   });
 }
 
-document.querySelector("#btn").addEventListener("click", reset);
-reset();
+function checkWin() {
+  check("X");
+  check("O");
+  checkTie();
+}
+
+function checkTie() {
+  if ((cells.innerHTML = "X" || "O")) {
+    return;
+  } else {
+    declareWinner("TIE");
+    return;
+  }
+}
+
+button.addEventListener("click", () => {
+  cells.forEach(cell => {
+    cell.innerHTML = "";
+    turnCounter = 0;
+    endgame.style.display = "none";
+  });
+});
 
 function declareWinner(mark) {
   document.querySelector(".endgame").style.display = "block";

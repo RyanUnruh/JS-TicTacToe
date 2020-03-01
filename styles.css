@@ -27,10 +27,6 @@ header {
   margin-top: 2em;
 }
 
-
-.container-fluid {
-
-}
 .container-sm {
   margin-top: 2em;
   display: block;
@@ -69,7 +65,7 @@ table tr td:last-child {
 .endgame {
   display: none;
   width: 200px;
-  top: 140px;
+  top: 200px;
   background-color: rgb(255, 119, 119);
   position: absolute;
   left: 50%;
