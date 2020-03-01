@@ -1,5 +1,6 @@
 let cells = document.querySelectorAll(".cell");
 let button = document.querySelector("#btn");
+let endgame = document.querySelector(".endgame");
 let turnCounter = 0;
 let winCombos = [
   [cells[0], cells[1], cells[2]],
@@ -19,8 +20,9 @@ cells.forEach(cell => {
     } else {
       cell.textContent = "O";
     }
+
     turnCounter++;
-    // deactivate();
+
     checkWin();
   });
 });
@@ -34,11 +36,16 @@ function check(mark) {
       }
 
       if (sum === 3) {
-        alert(mark + " Wins!");
+        declareWinner(mark + " Wins!");
         return;
       }
     });
   });
+}
+
+function cT(cell) {
+  cell.target.id.removeEventListener("click", changeTurn);
+  // the rest
 }
 
 function checkWin() {
@@ -46,17 +53,15 @@ function checkWin() {
   check("O");
 }
 
-function deactivate() {
-  if ((cell.innerHTML = "X" || "O")) {
-    cell.removeEventListener(cell);
-  } else {
-    return;
-  }
-}
-
 button.addEventListener("click", () => {
   cells.forEach(cell => {
     cell.innerHTML = "";
     turnCounter = 0;
+    endgame.style.display = "none";
   });
 });
+
+function declareWinner(mark) {
+  document.querySelector(".endgame").style.display = "block";
+  document.querySelector(".endgame .text").innerText = mark;
+}
