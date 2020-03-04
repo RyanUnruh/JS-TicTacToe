@@ -20,10 +20,6 @@ function reset() {
   });
 
   cells.forEach(cell => {
-    cell.removeEventListener("click", onClick);
-  });
-
-  cells.forEach(cell => {
     cell.addEventListener("click", onClick);
   });
 }
@@ -50,6 +46,11 @@ function checkWin(mark) {
 
       if (sum === 3) {
         declareWinner(mark + " Wins!");
+        return;
+      }
+
+      if (turnCounter == 8) {
+        declareWinner("TIE");
         return;
       }
     });
